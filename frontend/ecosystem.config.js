@@ -9,8 +9,6 @@ const {
 module.exports = {
     apps: [{
         name: 'mesto-frontend',
-        // script: './src/app.ts',
-        // interpreter: './node_modules/.bin/ts-node',
     }],
     deploy: {
         production: {
@@ -19,7 +17,7 @@ module.exports = {
             ref: DEPLOY_REF,
             repo: DEPLOY_REPO,
             path: DEPLOY_PATH,
-            'post-deploy': 'npm i && npm run build',
+            'post-deploy': 'cd /home/sever/mesto-app/frontend && npm i && npm run build',
         },
     },
 };

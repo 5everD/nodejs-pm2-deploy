@@ -10,7 +10,10 @@ const {
 module.exports = {
   apps: [{
     name: 'mesto-api',
-    script: 'npm run start',
+    script: '/dist/index.js',
+    instances: 1,
+    autorestart: true,
+    watch: false,
     env_production: {
       NODE_ENV: 'production',
       JWT_SECRET,
@@ -24,7 +27,7 @@ module.exports = {
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
       'pre-deploy-local': `scp ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
-      'post-deploy': 'npm i && pm2 start ecosystem.config.js --env production && pm2 save',
+      'post-deploy': 'cd /home/sever/mesto-app/backend && npm i && pm2 start ecosystem.config.js --env production && pm2 save',
     },
   },
 };
