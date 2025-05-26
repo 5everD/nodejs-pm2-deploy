@@ -13,16 +13,12 @@ const { PORT = 3000 } = process.env;
 const app = express();
 mongoose.connect(DB_ADDRESS);
 
-// Только для локальных тестов. Не используйте это в продакшене
 app.use(cors({
-  origin: [
-    'https://sever.nomorepartiessbs.ru/',
-    'http://sever.nomorepartiessbs.ru/',
-  ],
-  methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: 'https://sever.nomorepartiessbs.ru/',
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'Origin', 'X-Custom-Header'],
+  credentials: true,
 }));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
