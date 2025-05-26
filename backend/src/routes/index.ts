@@ -17,6 +17,7 @@ router.get('/crash-test', () => {
   }, 0);
 });
 router.post('/signup', validateUserBody, createUser);
+// @ts-ignore
 router.post('/signin', validateAuthentication, login);
 
 // все роуты, кроме /signin и /signup, защищены авторизацией;
