@@ -77,8 +77,10 @@ userSchema.statics
       });
   };
 
+// @ts-ignore
 userSchema.methods.toJSON = function toJSON() {
   const obj = this.toObject();
+  // @ts-ignore
   delete obj.password;
   return obj;
 };
